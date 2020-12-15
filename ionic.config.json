@@ -1,0 +1,7 @@
+{
+  "name": "Projeto-App-Hibrido",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
