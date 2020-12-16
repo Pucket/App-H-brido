@@ -18,6 +18,18 @@ const routes: Routes = [
     path: 'cliente',
     loadChildren: () => import('./cliente/cliente.module').then( m => m.ClientePageModule)
   },
+<<<<<<< HEAD
+=======
+  {
+    path: 'form-empresa',
+    loadChildren: () => import('./empresas/form-empresa/form-empresa.module').then( m => m.FormEmpresaPageModule)
+  },
+  {
+    path: 'lista-empresa',
+    loadChildren: () => import('./empresas/lista-empresa/lista-empresa.module').then( m => m.ListaEmpresaPageModule)
+  },
+];
+>>>>>>> ffab4cc6af6dcdb472f9ecdc4bc5ae32f81907ff
 
 ];
 
