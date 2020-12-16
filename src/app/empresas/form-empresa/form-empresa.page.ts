@@ -38,7 +38,7 @@ export class FormEmpresaPage implements OnInit {
     this.validacao = this.formulario.group({
       nome: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.minLength(10)
+        Validators.minLength(3)
       ])),
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -81,7 +81,7 @@ export class FormEmpresaPage implements OnInit {
     ],
   };
 
-  enviarContato(){
+  enviarEmpresa(){
     console.log(this.validacao.get('nome').value);
     let empresa = {};
 
