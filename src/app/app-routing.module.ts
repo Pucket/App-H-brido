@@ -10,7 +10,15 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'form-cliente',
+    loadChildren: () => import('./form-cliente/form-cliente.module').then( m => m.FormClientePageModule)
   },
+  {
+    path: 'cliente',
+    loadChildren: () => import('./cliente/cliente.module').then( m => m.ClientePageModule)
+  },
+
 ];
 
 @NgModule({
