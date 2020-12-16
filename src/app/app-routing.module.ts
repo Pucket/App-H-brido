@@ -28,6 +28,17 @@ const routes: Routes = [
     path: 'lista-empresa',
     loadChildren: () => import('./empresas/lista-empresa/lista-empresa.module').then( m => m.ListaEmpresaPageModule)
   },
+  {
+
+    path: 'form-empresa',
+  
+    loadChildren: () => import('./empresas/form-empresa/form-empresa.module').then( m => m.FormEmpresaPageModule)
+  
+  },
+  {
+    path: 'login-cliente',
+    loadChildren: () => import('./login-cliente/login-cliente.module').then( m => m.LoginClientePageModule)
+  },
 
 ];
 
