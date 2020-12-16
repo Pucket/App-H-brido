@@ -19,24 +19,17 @@ const routes: Routes = [
     path: 'cliente',
     loadChildren: () => import('./cliente/cliente.module').then( m => m.ClientePageModule)
   },
-  {
-    path: 'form-empresa',
-    loadChildren: () => import('./empresas/form-empresa/form-empresa.module').then( m => m.FormEmpresaPageModule)
-  },
-  {
-    path: 'lista-empresa',
-    loadChildren: () => import('./empresas/lista-empresa/lista-empresa.module').then( m => m.ListaEmpresaPageModule)
-  },  {
-    path: 'login-cliente',
-    loadChildren: () => import('./login-cliente/login-cliente.module').then( m => m.LoginClientePageModule)
-  },
+
   {
     path: 'registro-cliente',
     loadChildren: () => import('./registro-cliente/registro-cliente.module').then( m => m.RegistroClientePageModule)
   },
+  {
+    path: 'lista-empresa',
+    loadChildren: () => import('./empresas/lista-empresa/lista-empresa.module').then( m => m.ListaEmpresaPageModule)
+  },
 
 ];
-
 
 @NgModule({
   imports: [
