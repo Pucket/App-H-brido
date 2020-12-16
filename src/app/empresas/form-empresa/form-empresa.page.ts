@@ -102,7 +102,7 @@ export class FormEmpresaPage implements OnInit {
       this.service.alterar(empresa, this.id);
     }
 
-    this.nav.navigateForward("empresa");
+    this.nav.navigateForward("lista-empresa");
   }
 
 }
