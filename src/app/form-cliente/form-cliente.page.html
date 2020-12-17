@@ -1,19 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Cliente</ion-title>
-    
-    </ion-buttons>
+    <ion-toolbar>
+        <ion-title>Cliente</ion-title>
 
-  </ion-toolbar>
+        </ion-buttons>
+
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let item of cliente">
-    <ion-card-haeder>
-      <ion-card-title>{{item.nome}}</ion-card-title>
-      <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
-      <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
-    </ion-card-haeder>
-  </ion-card>
+    <ion-card *ngFor="let item of cliente">
+        <ion-card-haeder>
+            <ion-card-title>{{item.nome}}</ion-card-title>
+            <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
+            <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
+        </ion-card-haeder>
+    </ion-card>
 
 </ion-content>

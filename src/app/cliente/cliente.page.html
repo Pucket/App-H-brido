@@ -1,10 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cliente</ion-title>
+    <ion-toolbar>
+        <ion-title>Usuarios</ion-title>
+        <ion-buttons slot="end">
 
-  </ion-toolbar>
+            <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-card *ngFor="let item of usuario">
+        <ion-card-header>
+            <ion-card-title>{{item.nome}}</ion-card-title>
+            <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
+            <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
+            <ion-card-subtitle>{{item.dataNascimento}}</ion-card-subtitle>
+            <ion-card-subtitle>{{item.endereco}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-button (click)="inicioAlteracao(item)">Editar</ion-button>
+            <ion-button (click)="remover(item)">Excluir</ion-button>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
