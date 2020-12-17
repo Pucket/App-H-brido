@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NavController } from '@ionic/angular';
-import { AutenticacaoclienteService } from '../services/autenticacaocliente.service';
+import { AutenticacaoempresaService } from 'src/app/services/autenticacaoempresa.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-login-cliente',
-  templateUrl: './login-cliente.page.html',
-  styleUrls: ['./login-cliente.page.scss'],
+  selector: 'app-login-empresa',
+  templateUrl: './login-empresa.page.html',
+  styleUrls: ['./login-empresa.page.scss'],
 })
-export class LoginClientePage implements OnInit {
+export class LoginEmpresaPage implements OnInit {
   email: string;
   senha: string;
 
   validacao: FormGroup;
   mensagemErro: string = '';
   constructor(private nav: NavController,
-              private service: AutenticacaoclienteService,
+              private service: AutenticacaoempresaService,
               private formulario: FormBuilder) { }
 
   ngOnInit() {
+
     this.validacao = this.formulario.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -46,7 +47,7 @@ export class LoginClientePage implements OnInit {
 
   logar(valor){
     
-    this.service.logincliente(valor).then(
+    this.service.loginempresa(valor).then(
       res => {
         this.nav.navigateForward('/home');
       }, err => {
@@ -54,6 +55,5 @@ export class LoginClientePage implements OnInit {
       }
     );
   }
-
 
 }
