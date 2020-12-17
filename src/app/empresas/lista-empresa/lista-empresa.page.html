@@ -1,9 +1,30 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>lista_empresa</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/form-empresa">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button color="primary" routerLink="/home" > 
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let item of empresa">
+  <ion-card-header>
+    <ion-card-title>{{item.nome}}</ion-card-title>
+    <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
+    <ion-card-subtitle>{{item.endereco}}</ion-card-subtitle>
+    <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
+  </ion-card-header> 
+  <ion-card-content>
+    <ion-button (click)="inicioAlteracao(item)">Editar</ion-button>
+    <ion-button (click)="remover(item)">Excluir</ion-button>
+  </ion-card-content>
+  </ion-card>
 </ion-content>
