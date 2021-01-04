@@ -1,7 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>login-cliente</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button color="primary" routerLink="/home" > 
+        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content>
@@ -38,4 +46,9 @@
     </ion-item>
   </form>
 
+</ion-content>
+<ion-content>
+<div>
+  <ion-button expand="blok" color="dark" routerLink="/login-empresa">Login Empresa</ion-button>
+</div>
 </ion-content>
