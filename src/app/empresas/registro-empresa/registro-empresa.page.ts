@@ -49,7 +49,7 @@ export class RegistroEmpresaPage implements OnInit {
     
     this.service.cadastrarUsuario(usuario).then(
       res => {
-        this.nav.navigateForward('/home');
+        this.nav.navigateForward('/form-empresa');
       }, err => {
         console.log(err);
       }
