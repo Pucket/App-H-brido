@@ -4,6 +4,8 @@ import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { EmpresaService } from 'src/app/services/empresa.service';
 
+import { AutenticacaoempresaService } from 'src/app/services/autenticacaoempresa.service';
+
 //import { EmpresaService } from '../services/empresa.service';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
@@ -20,6 +22,8 @@ export class FormEmpresaPage implements OnInit {
   endereco: string;
   telefone: string;
 
+  emailLogin: string;
+
   validacao: FormGroup;
   mensagemErro: string = '';
 
@@ -28,9 +32,12 @@ export class FormEmpresaPage implements OnInit {
   constructor( private service: EmpresaService,
                private nav: NavController,
                private rota: ActivatedRoute,
-               private formulario: FormBuilder) { }
+               private formulario: FormBuilder,
+               private logado: AutenticacaoempresaService) { }
 
   ngOnInit() {
+
+
     this.id = this.rota.snapshot.params['id'];
 
     console.log(this.id);
@@ -55,10 +62,25 @@ export class FormEmpresaPage implements OnInit {
 
     });
     this.validacao.get('nome').setValue(this.rota.snapshot.params['nome']);
-    this.validacao.get('email').setValue(this.rota.snapshot.params['email']);
+    console.log(this.emailLogin);
+    this.validacao.get('email').setValue(this.emailLogin);
     this.validacao.get('endereco').setValue(this.rota.snapshot.params['endereco']);
     this.validacao.get('telefone').setValue(this.rota.snapshot.params['telefone']);
     
+    this.logado.detalhes().subscribe(res => {
+
+      //if ( res !== null){
+       console.log(res.email);
+       this.validacao.get('email').setValue(res.email);
+       console.log(this.emailLogin);
+    
+      //}
+    
+    }, err => {
+    
+      console.log('err', err);
+    
+    });
 
   }
 
@@ -102,7 +124,7 @@ export class FormEmpresaPage implements OnInit {
       this.service.alterar(empresa, this.id);
     }
 
-    this.nav.navigateForward("lista-empresa");
+    this.nav.navigateForward("inicio-empresa");
   }
 
 }
