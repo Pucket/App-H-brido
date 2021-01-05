@@ -4,18 +4,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FormClientePageRoutingModule } from './form-cliente-routing.module';
+import { InicioClientePageRoutingModule } from './inicio-cliente-routing.module';
 
-import { FormClientePage } from './form-cliente.page';
+import { InicioClientePage } from './inicio-cliente.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FormClientePageRoutingModule,
+    InicioClientePageRoutingModule,
     ReactiveFormsModule
+    
   ],
-  declarations: [FormClientePage]
+  declarations: [InicioClientePage]
 })
-export class FormClientePageModule {}
+export class InicioClientePageModule {}

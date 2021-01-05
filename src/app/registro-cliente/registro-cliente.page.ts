@@ -48,7 +48,7 @@ export class RegistroClientePage implements OnInit {
     
     this.service.cadastrarUsuario(usuario).then(
       res => {
-        this.nav.navigateForward('/home');
+        this.nav.navigateForward('/form-cliente');
       }, err => {
         console.log(err);
       }

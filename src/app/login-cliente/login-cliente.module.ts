@@ -14,7 +14,7 @@ import { LoginClientePage } from './login-cliente.page';
     FormsModule,
     IonicModule,
     LoginClientePageRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   declarations: [LoginClientePage]
 })
