@@ -48,7 +48,7 @@ export class LoginClientePage implements OnInit {
     
     this.service.logincliente(valor).then(
       res => {
-        this.nav.navigateForward('/home');
+        this.nav.navigateForward('/inicio-cliente');
       }, err => {
         console.log(err);
       }

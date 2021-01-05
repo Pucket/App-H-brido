@@ -49,7 +49,7 @@ export class LoginEmpresaPage implements OnInit {
     
     this.service.loginempresa(valor).then(
       res => {
-        this.nav.navigateForward('/home');
+        this.nav.navigateForward('/inicio-empresa');
       }, err => {
         console.log(err);
       }
