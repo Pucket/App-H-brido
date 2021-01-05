@@ -8,13 +8,15 @@ import { InicioClientePageRoutingModule } from './inicio-cliente-routing.module'
 
 import { InicioClientePage } from './inicio-cliente.page';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     InicioClientePageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     
   ],
   declarations: [InicioClientePage]
