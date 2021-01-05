@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { AutenticacaoclienteService } from '../services/autenticacaocliente.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
@@ -17,7 +17,8 @@ export class LoginClientePage implements OnInit {
   mensagemErro: string = '';
   constructor(private nav: NavController,
               private service: AutenticacaoclienteService,
-              private formulario: FormBuilder) { }
+              private formulario: FormBuilder,
+              private alerta: AlertController) { }
 
   ngOnInit() {
     this.validacao = this.formulario.group({
@@ -51,8 +52,27 @@ export class LoginClientePage implements OnInit {
         this.nav.navigateForward('/inicio-cliente');
       }, err => {
         console.log(err);
+
+        this.presentAlert();
+
       }
     );
+  }
+
+  async presentAlert() {
+
+    const alert = await this.alerta.create({
+      header: 'Alerta',
+      subHeader: 'Login inválido',
+      message: 'Email ou senha inválidos',
+      buttons: ['OK']
+
+    });
+
+
+
+    await alert.present();
+
   }
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { AutenticacaoempresaService } from 'src/app/services/autenticacaoempresa.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
@@ -17,7 +17,8 @@ export class LoginEmpresaPage implements OnInit {
   mensagemErro: string = '';
   constructor(private nav: NavController,
               private service: AutenticacaoempresaService,
-              private formulario: FormBuilder) { }
+              private formulario: FormBuilder,
+              private alerta: AlertController) { }
 
   ngOnInit() {
 
@@ -52,8 +53,26 @@ export class LoginEmpresaPage implements OnInit {
         this.nav.navigateForward('/inicio-empresa');
       }, err => {
         console.log(err);
+
+        this.presentAlert();
       }
     );
+  }
+
+  async presentAlert() {
+
+    const alert = await this.alerta.create({
+      header: 'Alerta',
+      subHeader: 'Login inválido',
+      message: 'Email ou senha inválidos',
+      buttons: ['OK']
+
+    });
+
+
+
+    await alert.present();
+
   }
 
 }
