@@ -19,6 +19,8 @@ export class FormClientePage implements OnInit {
   endereco: string;
   telefone: string;
 
+  emailLogin: string;
+
   validacao: FormGroup;
   mensagemErro: string = '';
 
@@ -27,7 +29,8 @@ export class FormClientePage implements OnInit {
   constructor( private service: UsuarioService,
                private nav: NavController,
                private rota: ActivatedRoute,
-               private formulario: FormBuilder) { }
+               private formulario: FormBuilder,
+               private logado: AutenticacaoclienteService) { }
 
   ngOnInit() {
     this.id = this.rota.snapshot.params['id'];
@@ -54,10 +57,24 @@ export class FormClientePage implements OnInit {
 
     });
     this.validacao.get('nome').setValue(this.rota.snapshot.params['nome']);
-    this.validacao.get('email').setValue(this.rota.snapshot.params['email']);
+    this.validacao.get('email').setValue(this.emailLogin);
     this.validacao.get('endereco').setValue(this.rota.snapshot.params['endereco']);
     this.validacao.get('telefone').setValue(this.rota.snapshot.params['telefone']);
     
+    this.logado.detalhes().subscribe(res => {
+
+      //if ( res !== null){
+       console.log(res.email);
+       this.validacao.get('email').setValue(res.email);
+       console.log(this.emailLogin);
+    
+      //}
+    
+    }, err => {
+    
+      console.log('err', err);
+    
+    });
 
   }
 
