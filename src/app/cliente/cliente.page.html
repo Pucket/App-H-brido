@@ -1,25 +1,88 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Usuarios</ion-title>
+        <ion-title>Perfil</ion-title>
         <ion-buttons slot="end">
 
-            <ion-icon slot="icon-only" name="add"></ion-icon>
+            <ion-icon slot="icon-only" name="create"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-card *ngFor="let item of usuario">
-        <ion-card-header>
-            <ion-card-title>{{item.nome}}</ion-card-title>
-            <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
-            <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
-            <ion-card-subtitle>{{item.dataNascimento}}</ion-card-subtitle>
-            <ion-card-subtitle>{{item.endereco}}</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-            <ion-button (click)="inicioAlteracao(item)">Editar</ion-button>
-            <ion-button (click)="remover(item)">Excluir</ion-button>
-        </ion-card-content>
-    </ion-card>
+    <ion-content>
+        <form [formGroup]="validacao" (ngSubmit)="atualizarCliente()">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-input type="text" placeholder="Digite o seu nome" formControlName="nome"></ion-input>
+              </ion-col>
+            </ion-row>
+            <div class="validation-errors">
+              <ng-container *ngFor="let m of mensagem_validacao.nome">
+                <div class="error-message" 
+                  *ngIf="validacao.get('nome').hasError(m.type) 
+                  && (validacao.get('nome').dirty 
+                  || validacao.get('nome').touched)">
+                  {{m.message}}
+                </div>
+              </ng-container>
+            </div>
+        
+            <ion-row>
+              <ion-col>
+                <ion-input type="text" placeholder="Digite seu e-mail" formControlName="email"></ion-input>
+              </ion-col>
+            </ion-row>
+            <div class="validation-errors">
+              <ng-container *ngFor="let m of mensagem_validacao.email">
+                <div class="error-message" 
+                  *ngIf="validacao.get('email').hasError(m.type) 
+                  && (validacao.get('email').dirty 
+                  || validacao.get('email').touched)">
+                  {{m.message}}
+                </div>
+              </ng-container>
+            </div>
+        
+            <ion-row>
+              <ion-col>
+                <ion-input type="text" placeholder="Digite o endereço" formControlName="endereco"></ion-input>
+              </ion-col>
+            </ion-row>
+            <div class="validation-errors">
+              <ng-container *ngFor="let m of mensagem_validacao.nome">
+                <div class="error-message" 
+                  *ngIf="validacao.get('endereco').hasError(m.type) 
+                  && (validacao.get('endereco').dirty 
+                  || validacao.get('endereco').touched)">
+                  {{m.message}}
+                </div>
+              </ng-container>
+            </div>
+        
+            <ion-row>
+              <ion-col>
+                <ion-input type="text" placeholder="Digite seu telefone" formControlName="telefone"></ion-input>
+              </ion-col>
+            </ion-row>
+            <div class="validation-errors">
+              <ng-container *ngFor="let m of mensagem_validacao.telefone">
+                <div class="error-message" 
+                  *ngIf="validacao.get('telefone').hasError(m.type) 
+                  && (validacao.get('telefone').dirty 
+                  || validacao.get('telefone').touched)">
+                  {{m.message}}
+                </div>
+              </ng-container>
+            </div>
+        
+            <ion-row>
+              <ion-col>
+                <ion-button type="submit"
+                [disabled]="!validacao.valid">Enviar</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+        </ion-content>
 </ion-content>
