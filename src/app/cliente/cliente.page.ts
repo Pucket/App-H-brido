@@ -41,8 +41,6 @@ export class ClientePage implements OnInit {
 
   ngOnInit() {
 
-    this.id = this.rota.snapshot.params['id'];
-
     console.log(this.id);
 
     this.validacao = this.formulario.group({
@@ -119,6 +117,7 @@ export class ClientePage implements OnInit {
 
           // Preencher os campos desse cliente
 
+          this.id = it.id;
           this.validacao.get('nome').setValue(it.nome);
           this.validacao.get('email').setValue(it.email);
           this.validacao.get('endereco').setValue(it.endereco);
@@ -155,7 +154,44 @@ export class ClientePage implements OnInit {
     ],
   };
 
-  atualizarCliente(){}
+  atualizarCliente(){
+    console.log(this.validacao.get('nome').value);
+    let cliente = {};
+
+    console.log("Nome: " + this.nome);
+    console.log("E-mail: " + this.email);
+    console.log("Endereço: " + this.endereco);
+    console.log("Telefone: " + this.telefone);
+
+    cliente['nome'] = this.validacao.get('nome').value;
+    cliente['email'] = this.validacao.get('email').value;
+    cliente['endereco'] = this.validacao.get('endereco').value;
+    cliente['telefone'] = this.validacao.get('telefone').value;
+
+    console.log(cliente);
+    
+    this.service.alterar(cliente, this.id).then(res => {
+
+      this.presentAlert();
+    
+    }).catch(error => {
+      
+    });
+  }
+
+  async presentAlert() {
+
+    const alert = await this.alerta.create({
+      header: 'Perfil alterado!',
+      subHeader: '',
+      message: 'Seus dados foram alterados com sucesso!',
+      buttons: ['OK']
+
+    });
+
+    await alert.present();
+
+  }
 
   /** 
   inicioAlteracao(registro){
