@@ -157,5 +157,5 @@ export class ListaEmpresaPage implements OnInit {
         ],
       };
     
-      atualizarCliente(){}
+      atualizarEmpresa(){}
 }
