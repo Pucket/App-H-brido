@@ -119,6 +119,7 @@ export class ClientePage implements OnInit {
 
           // Preencher os campos desse cliente
 
+          
           this.validacao.get('nome').setValue(it.nome);
           this.validacao.get('email').setValue(it.email);
           this.validacao.get('endereco').setValue(it.endereco);
