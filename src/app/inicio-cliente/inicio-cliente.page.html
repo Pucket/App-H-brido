@@ -12,4 +12,19 @@
 
 <ion-content>
 
+    <div id="container">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Bem vindo {{nomeCliente}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="sair()" color="secondary" routerLink="/home">Sair</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>    
+    </div>
+
 </ion-content>
