@@ -14,7 +14,7 @@ export class InicioClientePage implements OnInit {
 
   usuario: any;
 
-  email: string;
+  nomeCliente: string;
 
   constructor(private service: UsuarioService,
               private autenticacao: AutenticacaoclienteService,
@@ -23,13 +23,17 @@ export class InicioClientePage implements OnInit {
 
   ngOnInit() {
 
+    let variavel: boolean = true;
+
     let email: string;
-
-
 
     this.autenticacao.detalhes().subscribe(res => {
 
-      email = res.email;
+      if(res !== null){
+        email = res.email;
+      } else {
+        this.nav.navigateForward('home');
+      }
 
     }, err => {
 
@@ -69,18 +73,37 @@ export class InicioClientePage implements OnInit {
 
           console.log("Encontrou");
 
-          this.nav.navigateForward('login-cliente');
-          
-          break;
+          //this.nav.navigateForward('registro-cliente');
+           variavel = false;
+                   
 
-          
-
+        } else {
+          this.nomeCliente=it.nome;
+          variavel = true;
         }
 
       }
 
     }); 
 
+    if(!variavel){ 
+
+      this.nav.navigateForward('registro-cliente');
+
+    }
+
+  }
+
+  sair(){
+
+    console.log('Verificar');
+
+    this.autenticacao.logout().then(res => {
+      console.log(res);
+      this.nav.navigateForward('home');
+    } ).catch(error => {
+      console.log(error)
+    })
   }
 
 }

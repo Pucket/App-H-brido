@@ -74,7 +74,11 @@ export class ListaEmpresaPage implements OnInit {
     
         this.autenticacao.detalhes().subscribe(res => {
     
-          email = res.email;
+          if(res !== null){
+            email = res.email;
+          } else {
+            this.nav.navigateForward('home');
+          }
     
         }, err => {
     

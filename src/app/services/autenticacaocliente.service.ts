@@ -23,6 +23,7 @@ export class AutenticacaoclienteService {
   }
 
   logout(){
+    console.log('Chegou');
     return new Promise<any>((resolve, reject) => {
       this.autorizacao.signOut().then(() =>{
         res => resolve(res);
