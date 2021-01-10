@@ -16,7 +16,7 @@ import { InicioClientePage } from './inicio-cliente.page';
     FormsModule,
     IonicModule,
     InicioClientePageRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
     
   ],
   declarations: [InicioClientePage]
