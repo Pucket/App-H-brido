@@ -41,29 +41,45 @@ export class RedefirSenhaClientePage implements OnInit {
     this.service.redefinir(valor).then(
       res => {
         console.log(valor);
+        this.presentAlert(1);
         this.nav.navigateForward('/login-cliente');
       }, err => {
         console.log(err);
 
-        this.presentAlert();
+        this.presentAlert(2);
 
       }
     );
   }
 
-  async presentAlert() {
+  async presentAlert(parametro) {
 
-    const alert = await this.alerta.create({
-      header: 'Alerta',
-      subHeader: 'Login inválido',
-      message: 'Email ou senha inválidos',
-      buttons: ['OK']
+    if(parametro == 1){
+      const alert = await this.alerta.create({
+        header: 'Esqueceu a Senha',
+        //subHeader: 'Enviado para o E-Mail',
+        message: 'Foi enviado um e-mail, com as instruções para recuperação da senha',
+        buttons: ['OK']
+  
+      });
+      await alert.present();
 
-    });
+    } else {
+      const alert = await this.alerta.create({
+        header: 'Alerta',
+        subHeader: 'E-Mail Inválido',
+        message: 'Digite um E-Mail Valido',
+        buttons: ['OK']
+  
+      });
+      await alert.present();
+    }
+
+    
 
 
 
-    await alert.present();
+    
 
   }
 
