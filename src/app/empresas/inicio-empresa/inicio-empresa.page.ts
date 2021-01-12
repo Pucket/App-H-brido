@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AutenticacaoempresaService } from 'src/app/services/autenticacaoempresa.service'
-import { UsuarioService } from 'src/app/services/usuario.service'
+import { EmpresaService } from 'src/app/services/empresa.service'
 import { NavController } from '@ionic/angular'
 
 @Component({
@@ -15,7 +15,7 @@ export class InicioEmpresaPage implements OnInit {
 
   nomeEmpresa: string;
 
-  constructor(private service: UsuarioService,
+  constructor(private service: EmpresaService,
               private autenticacao: AutenticacaoempresaService,
               private nav: NavController
               ) { }
