@@ -54,7 +54,11 @@ const routes: Routes = [
   {
     path: 'inicio-empresa',
     loadChildren: () => import('./empresas/inicio-empresa/inicio-empresa.module').then( m => m.InicioEmpresaPageModule)
+  },  {
+    path: 'redefir-senha-cliente',
+    loadChildren: () => import('./redefir-senha-cliente/redefir-senha-cliente.module').then( m => m.RedefirSenhaClientePageModule)
   },
+
 
 
 
