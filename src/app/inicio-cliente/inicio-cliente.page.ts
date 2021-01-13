@@ -4,6 +4,7 @@ import { UsuarioService } from 'src/app/services/usuario.service'
 import { AutenticacaoclienteService } from 'src/app/services/autenticacaocliente.service'
 import { NavController } from '@ionic/angular';
 
+import { EmpresaService } from 'src/app/services/empresa.service'
 
 @Component({
   selector: 'app-inicio-cliente',
@@ -16,12 +17,31 @@ export class InicioClientePage implements OnInit {
 
   nomeCliente: string;
 
+  pesquisa: string;
+
+  empresa: any;
+
+  consultados: boolean = false;
+
   constructor(private service: UsuarioService,
               private autenticacao: AutenticacaoclienteService,
-              private nav: NavController
+              private nav: NavController,
+              private serviceEmpresa: EmpresaService,
               ) { }
 
   ngOnInit() {
+
+    this.serviceEmpresa.listar().subscribe(data => {
+      this.empresa = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          nome: e.payload.doc.data()['nome'],
+          email: e.payload.doc.data()['email'],
+          endereco: e.payload.doc.data()['endereco'],
+          telefone: e.payload.doc.data()['telefone']
+        }
+      })
+    })
 
     let variavel: boolean = true;
 
@@ -104,6 +124,31 @@ export class InicioClientePage implements OnInit {
     } ).catch(error => {
       console.log(error)
     })
+  }
+
+  async buscar(){
+    if(!this.pesquisa){
+      this.consultados = false;
+      this.serviceEmpresa.listar().subscribe(data => {
+        this.empresa = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            nome: e.payload.doc.data()['nome'],
+            email: e.payload.doc.data()['email'],
+            endereco: e.payload.doc.data()['endereco'],
+            telefone: e.payload.doc.data()['telefone']
+          }
+        })
+      })
+    } else {
+      this.consultados = true;
+    }
+    console.log(this.consultados);
+    this.empresa = this.empresa.filter(atual => {
+      if(atual.nome && this.pesquisa){
+        return atual.nome.toLowerCase().indexOf(this.pesquisa.toLowerCase()) > -1;
+      }
+    }) 
   }
 
 }
