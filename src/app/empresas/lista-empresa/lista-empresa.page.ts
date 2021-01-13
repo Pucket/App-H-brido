@@ -161,5 +161,43 @@ export class ListaEmpresaPage implements OnInit {
         ],
       };
     
-      atualizarEmpresa(){}
+      atualizarEmpresa(){
+
+        console.log(this.validacao.get('nome').value);
+        let empresa = {};
+    
+        console.log("Nome: " + this.nome);
+        console.log("E-mail: " + this.email);
+        console.log("Endereço: " + this.endereco);
+        console.log("Telefone: " + this.telefone);
+    
+        empresa['nome'] = this.validacao.get('nome').value;
+        empresa['email'] = this.validacao.get('email').value;
+        empresa['endereco'] = this.validacao.get('endereco').value;
+        empresa['telefone'] = this.validacao.get('telefone').value;
+    
+        console.log(empresa);
+    
+        this.service.alterar(empresa, this.id).then(res => {
+    
+          this.presentAlert();
+    
+        }).catch(error => {
+    
+        });
+      }
+    
+      async presentAlert() {
+    
+        const alert = await this.alerta.create({
+          header: 'Perfil alterado!',
+          subHeader: '',
+          message: 'Seus dados foram alterados com sucesso!',
+          buttons: ['OK']
+    
+        });
+    
+        await alert.present();
+    
+      }
 }
