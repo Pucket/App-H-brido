@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Inicio Cliente</ion-title>
+
+        <ion-buttons slot="start">
+            
+
+            
+               <ion-icon name="person-sharp" slot="start" routerLink="/cliente"></ion-icon>
+               
+            
+
+        </ion-buttons>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="buscar()" placeholder="Digite sua pesquisa">
+    
+  </ion-searchbar>
+    <ion-card *ngFor="let item of empresa" [hidden]="!consultados">
+      <ion-card-header>
+        <ion-card-title>{{item.nome}}</ion-card-title>
+        <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
+        <ion-card-subtitle>{{item.endereco}}</ion-card-subtitle>
+        <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
+    <div id="container">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Bem vindo {{nomeCliente}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="sair()" color="secondary" routerLink="/home">Sair</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>    
+    </div>
+
+</ion-content>

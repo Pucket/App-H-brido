@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastrar Empresa</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/lista-empresa"></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form [formGroup]="validacao" (ngSubmit)="enviarEmpresa()">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Digite o nome da empresa" formControlName="nome"></ion-input>
+      </ion-col>
+    </ion-row>
+    <div class="validation-errors">
+      <ng-container *ngFor="let m of mensagem_validacao.nome">
+        <div class="error-message" 
+          *ngIf="validacao.get('nome').hasError(m.type) 
+          && (validacao.get('nome').dirty 
+          || validacao.get('nome').touched)">
+          {{m.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Digite seu e-mail" formControlName="email"></ion-input>
+      </ion-col>
+    </ion-row>
+    <div class="validation-errors">
+      <ng-container *ngFor="let m of mensagem_validacao.email">
+        <div class="error-message" 
+          *ngIf="validacao.get('email').hasError(m.type) 
+          && (validacao.get('email').dirty 
+          || validacao.get('email').touched)">
+          {{m.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Digite o endereço da empresa" formControlName="endereco"></ion-input>
+      </ion-col>
+    </ion-row>
+    <div class="validation-errors">
+      <ng-container *ngFor="let m of mensagem_validacao.nome">
+        <div class="error-message" 
+          *ngIf="validacao.get('endereco').hasError(m.type) 
+          && (validacao.get('endereco').dirty 
+          || validacao.get('endereco').touched)">
+          {{m.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Digite seu telefone" formControlName="telefone"></ion-input>
+      </ion-col>
+    </ion-row>
+    <div class="validation-errors">
+      <ng-container *ngFor="let m of mensagem_validacao.telefone">
+        <div class="error-message" 
+          *ngIf="validacao.get('telefone').hasError(m.type) 
+          && (validacao.get('telefone').dirty 
+          || validacao.get('telefone').touched)">
+          {{m.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit"
+        [disabled]="!validacao.valid">Enviar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+</ion-content>

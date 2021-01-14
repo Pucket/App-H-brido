@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Esqueci Senha Cliente</ion-title>
+        <ion-buttons slot="start">
+            <ion-button color="primary" routerLink="/login-cliente">
+                <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <form [formGroup]="validacao" (ngSubmit)="redefinir(validacao.value)">
+        <ion-item>
+            <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+            <ng-container *ngFor="let m of mensagem_validacao.email">
+                <div class="error-message" *ngIf="validacao.get('email').hasError(m.type) 
+      && (validacao.get('email').dirty 
+      || validacao.get('email').touched)">
+                    {{m.message}}
+                </div>
+            </ng-container>
+        </div>
+
+        <ion-item>
+            <ion-button type="submit" [disabled]="!validacao.valid">Enviar</ion-button>
+        </ion-item>
+    </form>
+</ion-content>

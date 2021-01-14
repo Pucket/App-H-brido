@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastrar Serviço</ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="primary" routerLink="/inicio-empresa" > 
+        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="validacao" (ngSubmit)="enviarServico()">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-input type="text" placeholder="Digite o nome do serviço" formControlName="nome"></ion-input>
+        </ion-col>
+      </ion-row>
+      <div class="validation-errors">
+        <ng-container *ngFor="let m of mensagem_validacao.nome">
+          <div class="error-message" 
+            *ngIf="validacao.get('nome').hasError(m.type) 
+            && (validacao.get('nome').dirty 
+            || validacao.get('nome').touched)">
+            {{m.message}}
+          </div>
+        </ng-container>
+      </div>
+      <ion-row>
+        <ion-col>
+          <ion-input type="text" placeholder="Descrição do serviço" formControlName="descricao"></ion-input>
+        </ion-col>
+      </ion-row>
+      <div class="validation-errors">
+        <ng-container *ngFor="let m of mensagem_validacao.descricao">
+          <div class="error-message" 
+            *ngIf="validacao.get('descricao').hasError(m.type) 
+            && (validacao.get('descricao').dirty 
+            || validacao.get('descricao').touched)">
+            {{m.message}}
+          </div>
+        </ng-container>
+      </div>
+      <ion-row>
+        <ion-col>
+          <ion-input type="text" placeholder="Digite valor do serviço" formControlName="valor"></ion-input>
+        </ion-col>
+      </ion-row>
+      <div class="validation-errors">
+        <ng-container *ngFor="let m of mensagem_validacao.valor">
+          <div class="error-message" 
+            *ngIf="validacao.get('valor').hasError(m.type) 
+            && (validacao.get('valor').dirty 
+            || validacao.get('valor').touched)">
+            {{m.message}}
+          </div>
+        </ng-container>
+      </div>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit"
+          [disabled]="!validacao.valid">Enviar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  </ion-content>
