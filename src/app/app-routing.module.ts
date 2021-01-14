@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'redefir-senha-cliente',
     loadChildren: () => import('./redefir-senha-cliente/redefir-senha-cliente.module').then( m => m.RedefirSenhaClientePageModule)
   },
+  {
+    path: 'redefinir-senha-empresa',
+    loadChildren: () => import('./redefinir-senha-empresa/redefinir-senha-empresa.module').then( m => m.RedefinirSenhaEmpresaPageModule)
+  },
 
 
 
