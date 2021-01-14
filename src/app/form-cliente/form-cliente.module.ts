@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormClientePageRoutingModule } from './form-cliente-routing.module';
 
 import { FormClientePage } from './form-cliente.page';
-
+ 
 @NgModule({
   imports: [
     CommonModule,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 import { AngularFirestore } from '@angular/fire/firestore'
-
+  
 @Injectable({
   providedIn: 'root'
 })

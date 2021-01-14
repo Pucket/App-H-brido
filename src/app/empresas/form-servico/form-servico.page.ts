@@ -75,6 +75,7 @@ export class FormServicoPage implements OnInit {
     ],
   };
 
+  
   enviarServico(){
     console.log(this.validacao.get('nome').value);
     let serv = {};
