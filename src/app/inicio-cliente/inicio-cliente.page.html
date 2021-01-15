@@ -22,9 +22,12 @@
     <ion-card *ngFor="let item of empresa" [hidden]="!consultados">
       <ion-card-header>
         <ion-card-title>{{item.nome}}</ion-card-title>
-        <ion-card-subtitle>{{item.descricao}}</ion-card-subtitle>
-        <ion-card-subtitle>{{item.valor}}</ion-card-subtitle>
+        <ion-card-subtitle>Descrição: {{item.descricao}}</ion-card-subtitle>
+        <ion-card-subtitle>Valor: R$ {{item.valor}}</ion-card-subtitle>
       </ion-card-header>
+      <ion-card-content>
+        <ion-button routerLink="/servico">Ver mais</ion-button>
+      </ion-card-content>
     </ion-card>
 
     <div id="container">
