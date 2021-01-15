@@ -5,6 +5,7 @@ import { AutenticacaoclienteService } from 'src/app/services/autenticacaocliente
 import { NavController } from '@ionic/angular';
 
 import { ServicoService } from 'src/app/empresas/servico.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-inicio-cliente',
@@ -22,6 +23,8 @@ export class InicioClientePage implements OnInit {
   empresa: any;
 
   consultados: boolean = false;
+
+  chave: any;
 
   constructor(private service: UsuarioService,
               private autenticacao: AutenticacaoclienteService,
@@ -147,6 +150,12 @@ export class InicioClientePage implements OnInit {
         return atual.nome.toLowerCase().indexOf(this.pesquisa.toLowerCase()) > -1;
       }
     }) 
+  }
+
+  abrirServico(item){
+
+    this.nav.navigateForward( [ "/servico", {  id: item.id, nome: item.nome, 
+      descricao: item.descricao, valor: item.valor } ]);
   }
 
 }
