@@ -54,13 +54,22 @@ const routes: Routes = [
   {
     path: 'inicio-empresa',
     loadChildren: () => import('./empresas/inicio-empresa/inicio-empresa.module').then( m => m.InicioEmpresaPageModule)
-  },  {
+  },
+  {
     path: 'redefir-senha-cliente',
     loadChildren: () => import('./redefir-senha-cliente/redefir-senha-cliente.module').then( m => m.RedefirSenhaClientePageModule)
   },
   {
     path: 'redefinir-senha-empresa',
     loadChildren: () => import('./redefinir-senha-empresa/redefinir-senha-empresa.module').then( m => m.RedefinirSenhaEmpresaPageModule)
+  },
+  {
+    path: 'form-servico',
+    loadChildren: () => import('./empresas/form-servico/form-servico.module').then( m => m.FormServicoPageModule)
+  },
+  {
+    path: 'servico',
+    loadChildren: () => import('./empresas/servico/servico.module').then( m => m.ServicoPageModule)
   },
 
 

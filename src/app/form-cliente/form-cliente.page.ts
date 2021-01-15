@@ -6,7 +6,6 @@ import { AutenticacaoclienteService } from 'src/app/services/autenticacaocliente
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
-
 @Component({
   selector: 'app-form-cliente',
   templateUrl: './form-cliente.page.html',
