@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Avaliação Empresa</ion-title>
+
+        <ion-buttons slot="start">
+            <ion-button color="primary" routerLink="/">
+                <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-input type="text" placeholder="Título" [(ngModel)]="titulo"></ion-input>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-textarea rows="5" type="text" placeholder="Descrição" [(ngModel)]="descricao"></ion-textarea>
+            </ion-col>
+        </ion-row>
+
+        <ion-list>
+
+            <ion-radio-group [(ngModel)]="nota">
+                <ion-list-header>
+                    <ion-label>
+                        Avaliação
+                    </ion-label>
+                </ion-list-header>
+
+                <ion-item>
+                    <ion-label>5 - Excelente</ion-label>
+
+                    <ion-radio value="5"></ion-radio>
+
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>4 - Muito bom</ion-label>
+                    <ion-radio value="4"></ion-radio>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>3 - Bom</ion-label>
+                    <ion-radio value="3"></ion-radio>
+
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>2 - Ruim</ion-label>
+                    <ion-radio value="2"></ion-radio>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>1 - Péssimo</ion-label>
+                    <ion-radio value="1"></ion-radio>
+                </ion-item>
+
+            </ion-radio-group>
+        </ion-list>
+
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="enviarAvaliacao() ">Salvar</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

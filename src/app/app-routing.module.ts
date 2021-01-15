@@ -70,7 +70,11 @@ const routes: Routes = [
   {
     path: 'servico',
     loadChildren: () => import('./empresas/servico/servico.module').then( m => m.ServicoPageModule)
+  },  {
+    path: 'avaliacao-empresa',
+    loadChildren: () => import('./avaliacao-empresa/avaliacao-empresa.module').then( m => m.AvaliacaoEmpresaPageModule)
   },
+
 
 
 
