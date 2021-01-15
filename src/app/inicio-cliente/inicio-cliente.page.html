@@ -22,9 +22,8 @@
     <ion-card *ngFor="let item of empresa" [hidden]="!consultados">
       <ion-card-header>
         <ion-card-title>{{item.nome}}</ion-card-title>
-        <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
-        <ion-card-subtitle>{{item.endereco}}</ion-card-subtitle>
-        <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
+        <ion-card-subtitle>{{item.descricao}}</ion-card-subtitle>
+        <ion-card-subtitle>{{item.valor}}</ion-card-subtitle>
       </ion-card-header>
     </ion-card>
 

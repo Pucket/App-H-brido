@@ -4,7 +4,7 @@ import { UsuarioService } from 'src/app/services/usuario.service'
 import { AutenticacaoclienteService } from 'src/app/services/autenticacaocliente.service'
 import { NavController } from '@ionic/angular';
 
-import { EmpresaService } from 'src/app/services/empresa.service'
+import { ServicoService } from 'src/app/empresas/servico.service';
 
 @Component({
   selector: 'app-inicio-cliente',
@@ -26,19 +26,18 @@ export class InicioClientePage implements OnInit {
   constructor(private service: UsuarioService,
               private autenticacao: AutenticacaoclienteService,
               private nav: NavController,
-              private serviceEmpresa: EmpresaService,
+              private serviceEmpresa: ServicoService,
               ) { }
 
   ngOnInit() {
 
-    this.serviceEmpresa.listar().subscribe(data => {
+    this.serviceEmpresa.listLazyRoutes().subscribe(data => {
       this.empresa = data.map(e => {
         return {
           id: e.payload.doc.id,
           nome: e.payload.doc.data()['nome'],
-          email: e.payload.doc.data()['email'],
-          endereco: e.payload.doc.data()['endereco'],
-          telefone: e.payload.doc.data()['telefone']
+          descricao: e.payload.doc.data()['descricao'],
+          valor: e.payload.doc.data()['valor'],
         }
       })
     })
@@ -129,14 +128,13 @@ export class InicioClientePage implements OnInit {
   async buscar(){
     if(!this.pesquisa){
       this.consultados = false;
-      this.serviceEmpresa.listar().subscribe(data => {
+      this.serviceEmpresa.listLazyRoutes().subscribe(data => {
         this.empresa = data.map(e => {
           return {
             id: e.payload.doc.id,
             nome: e.payload.doc.data()['nome'],
-            email: e.payload.doc.data()['email'],
-            endereco: e.payload.doc.data()['endereco'],
-            telefone: e.payload.doc.data()['telefone']
+            descricao: e.payload.doc.data()['descricao'],
+            valor: e.payload.doc.data()['valor'],
           }
         })
       })
