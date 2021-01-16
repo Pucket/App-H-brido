@@ -1,9 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>servico</ion-title>
+    <ion-title>Serviços</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/form-servico">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-button color="primary" routerLink="/inicio-empresa" > 
+        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+ 
 <ion-content>
+  <!-- <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="buscar()"
+  placeholder="Digite o termo de pesquisa">
 
+  </ion-searchbar> -->
+  <ion-card *ngFor="let item of servico">
+    <io-card-haeder>
+      <ion-card-title>{{item.nome}}</ion-card-title>
+      <ion-card-subtitle>{{item.descricao}}</ion-card-subtitle>
+      <ion-card-subtitle>{{item.valor}}</ion-card-subtitle>
+    </io-card-haeder>
+    <ion-card-content>
+      <ion-button (click)="inicioAlteracao(item)" >Editar</ion-button>
+      <ion-button (click)="remover(item)">Excluit</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

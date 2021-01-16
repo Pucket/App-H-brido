@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavController, NavParams } from '@ionic/angular';
+import { AlertController, NavController, NavParams } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { ServicoService } from 'src/app/empresas/servico.service';
+import { removeSummaryDuplicates } from '@angular/compiler';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-servico',
@@ -13,9 +17,92 @@ export class ServicoPage implements OnInit {
   descricao: string;
   valor: string;
   
-  constructor() { }
+  servico: any;
+  pesquisa: string;
+  constructor(private service: ServicoService,
+            private rota: ActivatedRoute,
+            private nav: NavController,
+            private alerta: AlertController
+    ) { }
 
   ngOnInit() {
+    this.service.listLazyRoutes().subscribe(data => {
+      this.servico = data.map(e =>{
+        
+        return{
+          id: e.payload.doc.id,
+          nome: e.payload.doc.data()['nome'],
+          descricao: e.payload.doc.data()['descricao'],
+          valor: e.payload.doc.data()['valor']
+        };
+      }
+       
+         );
+         console.log(this.servico);
+    } 
+    );
+
   }
 
-}
+  
+  inicioAlteracao(registro){
+    console.log(registro);
+    this.nav.navigateForward( ["form-servico", 
+      { id: registro.id, 
+        nome: registro.nome, 
+        descricao: registro.descricao,
+        valor: registro.valor  
+       }
+    ] );
+    
+  }
+    async remover(registro) {
+      const mensagem = await this.alerta.create({
+        header: "Atenção",
+        message: "Deseja excluir esse serviço ?",
+      
+        buttons: [
+          { 
+            text: "OK",
+           
+            handler: () => {
+              this.service.excluir(registro);
+              this.mensagemConfirmacao();
+            }
+          },
+           {
+             text: "Cancelar",
+             handler:() => {
+            
+            }
+          }
+        ] 
+      }); 
+ await mensagem.present();
+  }
+
+  async mensagemConfirmacao(){
+   const confirmacao = await this.alerta.create({
+     header: "Sucesso!",
+     message: "Serviço excluído com sucesso!",
+     buttons: [
+       {
+         text: "OK",
+         handler:() => {}
+       }
+     ]
+   });
+
+   await confirmacao.present();
+
+  }
+
+
+  }
+
+
+    
+    
+  
+
+
