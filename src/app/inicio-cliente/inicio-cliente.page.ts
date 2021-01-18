@@ -154,7 +154,7 @@ export class InicioClientePage implements OnInit {
 
   abrirServico(item){
 
-    this.nav.navigateForward( [ "/servico", {  id: item.id, nome: item.nome, 
+    this.nav.navigateForward( [ "/exibir-servico", {  id: item.id, nome: item.nome, 
       descricao: item.descricao, valor: item.valor } ]);
   }
 
