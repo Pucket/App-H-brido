@@ -1,11 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>{{nome}}</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>{{nome}}</ion-title>
+        <ion-buttons slot="start">
+            <ion-button color="primary" routerLink="/inicio-cliente">
+                <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-Servico: {{nome}}<br/>
-Descrição: {{descricao}} <br/>
-Valor: R$ {{valor}}
+    Servico: {{nome}}<br/> Descrição: {{descricao}} <br/> Valor: R$ {{valor}}
+
+    <div>
+        <ion-button color="secondary" (click)="avaliar()">Avaliar</ion-button>
+    </div>
+
 </ion-content>
