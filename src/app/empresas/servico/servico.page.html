@@ -21,7 +21,8 @@
   placeholder="Digite o termo de pesquisa">
 
   </ion-searchbar> -->
-  <ion-card *ngFor="let item of servico">
+  
+  <ion-card *ngFor="let item of servico"  [hidden]="item.email!==emaillogado">
     <io-card-haeder>
       <ion-card-title>{{item.nome}}</ion-card-title>
       <ion-card-subtitle>{{item.descricao}}</ion-card-subtitle>

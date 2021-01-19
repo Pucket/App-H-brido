@@ -5,6 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ServicoService } from 'src/app/empresas/servico.service';
 import { removeSummaryDuplicates } from '@angular/compiler';
 import { filter } from 'rxjs/operators';
+import { LoginEmpresaPage } from '../login-empresa/login-empresa.page';
+import { EmailValidator } from '@angular/forms';
+import { AutenticacaoempresaService } from '../../../app/services/autenticacaoempresa.service';
 
 @Component({
   selector: 'app-servico',
@@ -16,16 +19,37 @@ export class ServicoPage implements OnInit {
   nome: string;
   descricao: string;
   valor: string;
-  
+  email: string;
+  emaillogado: string;
+
   servico: any;
   pesquisa: string;
   constructor(private service: ServicoService,
             private rota: ActivatedRoute,
             private nav: NavController,
-            private alerta: AlertController
+            private alerta: AlertController,
+            private autoempresa: AutenticacaoempresaService
     ) { }
 
   ngOnInit() {
+    this.autoempresa.detalhes().subscribe(res => {
+
+      if(res !== null){
+   
+       this.emaillogado = res.email;
+   
+      } 
+   
+     }, err => {
+   
+   
+   
+      console.log('err', err);
+   
+   
+   
+     });
+
     this.service.listLazyRoutes().subscribe(data => {
       this.servico = data.map(e =>{
         
@@ -33,16 +57,20 @@ export class ServicoPage implements OnInit {
           id: e.payload.doc.id,
           nome: e.payload.doc.data()['nome'],
           descricao: e.payload.doc.data()['descricao'],
-          valor: e.payload.doc.data()['valor']
+          valor: e.payload.doc.data()['valor'],
+          email: e.payload.doc.data()['email']
         };
       }
        
          );
          console.log(this.servico);
+         
     } 
     );
 
   }
+
+
 
   
   inicioAlteracao(registro){
@@ -96,6 +124,9 @@ export class ServicoPage implements OnInit {
    await confirmacao.present();
 
   }
+
+
+  
 
 
   }
