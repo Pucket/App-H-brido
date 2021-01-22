@@ -34,7 +34,7 @@ export class ExibirServicoPage implements OnInit {
     this.nome = this.rota.snapshot.params['nome'];
     this.descricao = this.rota.snapshot.params['descricao'];
     this.valor = this.rota.snapshot.params['valor'];
-    this.valor = this.rota.snapshot.params['email'];
+    this.email = this.rota.snapshot.params['email'];
 
   }
 

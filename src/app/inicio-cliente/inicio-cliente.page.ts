@@ -41,6 +41,7 @@ export class InicioClientePage implements OnInit {
           nome: e.payload.doc.data()['nome'],
           descricao: e.payload.doc.data()['descricao'],
           valor: e.payload.doc.data()['valor'],
+          email: e.payload.doc.data()['email']
         }
       })
     })
@@ -138,6 +139,7 @@ export class InicioClientePage implements OnInit {
             nome: e.payload.doc.data()['nome'],
             descricao: e.payload.doc.data()['descricao'],
             valor: e.payload.doc.data()['valor'],
+            email: e.payload.doc.data()['email']
           }
         })
       })
@@ -155,7 +157,7 @@ export class InicioClientePage implements OnInit {
   abrirServico(item){
 
     this.nav.navigateForward( [ "/exibir-servico", {  id: item.id, nome: item.nome, 
-      descricao: item.descricao, valor: item.valor } ]);
+      descricao: item.descricao, valor: item.valor, email: item.email } ]);
   }
 
 }
