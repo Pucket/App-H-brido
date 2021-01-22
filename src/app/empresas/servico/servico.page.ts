@@ -79,7 +79,8 @@ export class ServicoPage implements OnInit {
       { id: registro.id, 
         nome: registro.nome, 
         descricao: registro.descricao,
-        valor: registro.valor  
+        valor: registro.valor, 
+        email: registro.email
        }
     ] );
     
