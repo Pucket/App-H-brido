@@ -14,6 +14,7 @@ export class ExibirServicoPage implements OnInit {
   nome: string;
   descricao: string;
   valor: string;
+  email: string;
 
   constructor(private nav: NavController,
               private rota: ActivatedRoute) { }
@@ -24,6 +25,7 @@ export class ExibirServicoPage implements OnInit {
     this.nome = this.rota.snapshot.params['nome'];
     this.descricao = this.rota.snapshot.params['descricao'];
     this.valor = this.rota.snapshot.params['valor'];
+    this.valor = this.rota.snapshot.params['email'];
 
   }
 
