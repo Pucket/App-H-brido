@@ -23,11 +23,11 @@
   </ion-searchbar> -->
   
   <ion-card *ngFor="let item of servico"  [hidden]="item.email!==emaillogado">
-    <io-card-haeder>
+    <ion-card-header>
       <ion-card-title>{{item.nome}}</ion-card-title>
       <ion-card-subtitle>{{item.descricao}}</ion-card-subtitle>
       <ion-card-subtitle>{{item.valor}}</ion-card-subtitle>
-    </io-card-haeder>
+    </ion-card-header>
     <ion-card-content>
       <ion-button (click)="inicioAlteracao(item)" >Editar</ion-button>
       <ion-button (click)="remover(item)">Excluir</ion-button>
