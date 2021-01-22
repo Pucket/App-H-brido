@@ -17,6 +17,7 @@ export class FormServicoPage implements OnInit {
   nome: string;
   descricao: string;
   valor: Number;
+  email: string;
 
   validacao: FormGroup;
   mensagemErro: string = '';
@@ -47,6 +48,11 @@ export class FormServicoPage implements OnInit {
       valor: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(2)
+      ])),
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+    
       ]))
 
     });
@@ -56,6 +62,9 @@ export class FormServicoPage implements OnInit {
     this.validacao.get('descricao').setValue(this.rota.snapshot.params['descricao']);
     this.valor = this.rota.snapshot.params['valor'];
     this.validacao.get('valor').setValue(this.rota.snapshot.params['valor']);
+    this.email = this.rota.snapshot.params['email'];
+    this.validacao.get('email').setValue(this.rota.snapshot.params['email']);
+
 
   }
 
@@ -72,6 +81,10 @@ export class FormServicoPage implements OnInit {
       {type: 'required', message: 'valor é obrigatório'},
       {type: 'minlength', message: 'valor deve ter no mínimo dois caracteres'}
     ],
+    'email': [
+      {type: 'required', message: 'E-mail é obrigatório'},
+      {type: 'pattern', message: 'E-mail inválido'}
+    ],
   };
 
   
@@ -82,11 +95,13 @@ export class FormServicoPage implements OnInit {
     console.log("Nome: " + this.nome);
     console.log("descricao " + this.descricao);  
     console.log("valor " + this.valor);
+    console.log("email " + this.email);
 
    
     serv['nome'] = this.validacao.get('nome').value;
     serv['descricao'] = this.validacao.get('descricao').value;
     serv['valor'] = this.validacao.get('valor').value;
+    serv['email'] = this.validacao.get('email').value;
 
     console.log(serv);
     if(this.id == null){
