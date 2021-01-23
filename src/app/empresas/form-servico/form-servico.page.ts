@@ -4,8 +4,10 @@ import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
-import { ServicoService } from 'src/app/empresas/servico.service'
+import { ServicoService } from 'src/app/empresas/servico.service';
 import { ServicoPage } from '../servico/servico.page';
+
+import { AutenticacaoempresaService} from 'src/app/services/autenticacaoempresa.service';
 
 @Component({
   selector: 'app-form-servico',
@@ -19,6 +21,8 @@ export class FormServicoPage implements OnInit {
   valor: Number;
   email: string;
 
+  emailLogin: string;
+
   validacao: FormGroup;
   mensagemErro: string = '';
 
@@ -27,7 +31,8 @@ export class FormServicoPage implements OnInit {
   constructor(private servico: ServicoService,
             private nav: NavController,
             private rota: ActivatedRoute,
-            private formulario: FormBuilder
+            private formulario: FormBuilder,
+            private logado: AutenticacaoempresaService,
     ) { }
 
   ngOnInit() {
@@ -62,9 +67,24 @@ export class FormServicoPage implements OnInit {
     this.validacao.get('descricao').setValue(this.rota.snapshot.params['descricao']);
     this.valor = this.rota.snapshot.params['valor'];
     this.validacao.get('valor').setValue(this.rota.snapshot.params['valor']);
-    this.email = this.rota.snapshot.params['email'];
-    this.validacao.get('email').setValue(this.rota.snapshot.params['email']);
+    // this.email = this.rota.snapshot.params['email'];
+    // this.validacao.get('email').setValue(this.rota.snapshot.params['email']);
+    this.validacao.get('email').setValue(this.emailLogin);
 
+    this.logado.detalhes().subscribe(res => {
+
+      //if ( res !== null){
+       console.log(res.email);
+       this.validacao.get('email').setValue(res.email);
+       console.log(this.emailLogin);
+    
+      //}
+    
+    }, err => {
+    
+      console.log('err', err);
+    
+    });
 
   }
 
@@ -81,10 +101,10 @@ export class FormServicoPage implements OnInit {
       {type: 'required', message: 'valor é obrigatório'},
       {type: 'minlength', message: 'valor deve ter no mínimo dois caracteres'}
     ],
-    'email': [
-      {type: 'required', message: 'E-mail é obrigatório'},
-      {type: 'pattern', message: 'E-mail inválido'}
-    ],
+    // 'email': [
+    //   {type: 'required', message: 'E-mail é obrigatório'},
+    //   {type: 'pattern', message: 'E-mail inválido'}
+    // ],
   };
 
   
