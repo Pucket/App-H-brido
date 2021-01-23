@@ -1,29 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title><h2>Serviço</h2></ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            <h2>Serviço</h2>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <div id="container">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <h2> {{nome}}</h2>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <h5> {{descricao}}</h5>
-          <h5> Valor: R$ {{valor}}</h5>
-        </ion-col>
-      </ion-row>
-      <ion-item>
-        <h5> Email: {{email}}   </h5>
-        <ion-button color="secondary" routerLink="" slot="end">Chat</ion-button>
-      </ion-item>
-    </ion-grid>    
-  </div>
+    <div id="container">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <h2> {{nome}}</h2>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <h5> {{descricao}}</h5>
+                    <h5> Valor: R$ {{valor}}</h5>
+                </ion-col>
+            </ion-row>
+            <ion-item>
+                <h5> Email: {{email}} </h5>
+                <ion-button color="secondary" routerLink="" slot="end">Chat</ion-button>
+            </ion-item>
+        </ion-grid>
+    </div>
+
+    <div>
+        <ion-button color="secondary" (click)="avaliar()">Avaliar</ion-button>
+    </div>
+
+    <div>
+
+    </div>
 
 </ion-content>
