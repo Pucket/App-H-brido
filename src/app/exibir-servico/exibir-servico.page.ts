@@ -46,6 +46,7 @@ export class ExibirServicoPage implements OnInit {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Avaliar',
+      mode: "ios",
       inputs: [
         {
           name: 'Titulo',
@@ -54,8 +55,7 @@ export class ExibirServicoPage implements OnInit {
         },
         {
           name: 'Descrição',
-          type: 'text',
-          
+          type: 'textarea',
           placeholder: 'Descrição'
         },
       ],
@@ -85,9 +85,6 @@ export class ExibirServicoPage implements OnInit {
    
             console.log("Nome: " + this.titulo);
             console.log("Descrição: " + this.descricao);
-        
-           
-          //    this.service.incluir(avaliacao);
           
             this.radios();
           }
