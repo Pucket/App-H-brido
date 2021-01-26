@@ -3,6 +3,11 @@
         <ion-title>
             <h2>Serviço</h2>
         </ion-title>
+        <ion-buttons slot="start">
+            <ion-button color="primary" routerLink="/inicio-cliente" > 
+              <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+            </ion-button>
+          </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -23,7 +28,7 @@
             </ion-row>
             <ion-item>
                 <h5> Email: {{email}} </h5>
-                <ion-button color="secondary" routerLink="" slot="end">Chat</ion-button>
+                <ion-button color="secondary" (click)="abrirChat()" slot="end">Chat</ion-button>
             </ion-item>
         </ion-grid>
     </div>

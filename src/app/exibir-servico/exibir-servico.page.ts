@@ -160,6 +160,10 @@ export class ExibirServicoPage implements OnInit {
     await alert.present();
 }
 
+abrirChat(){
+    this.nav.navigateForward( [ "/chat", {  id: this.id, nome: this.nome, 
+      descricao: this.descricao, valor: this.valor, email: this.email } ]);
+  }
   
 
 }
