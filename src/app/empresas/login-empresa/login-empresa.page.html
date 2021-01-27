@@ -9,10 +9,15 @@
     
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <div id="header">
+  <img src="assets/img/dinheiro-carro.jpg"/>
+</div>
+</ion-content>
 
 <ion-content>
   <form [formGroup]="validacao" (ngSubmit)="logar(validacao.value)">
-    <ion-item>
+    <ion-item id="form">
       <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -25,7 +30,7 @@
         </div>
       </ng-container>
     </div>
-    <ion-item>
+    <ion-item id="form">
       <ion-input type="password" placeholder="Senha" formControlName="senha"></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -38,11 +43,11 @@
         </div>
       </ng-container>
     </div>
-    <ion-item>
-      <ion-button type="submit" [disabled]="!validacao.valid">Enviar</ion-button>
-      <ion-button routerLink="/registro-empresa">Registrar</ion-button>
-      <ion-button routerLink="/redefinir-senha-empresa">Esqueceu a Senha?</ion-button>
-    </ion-item>
+    
+      <ion-button color="dark" expand="full" expand="block" shape="round" type="submit" [disabled]="!validacao.valid">Enviar</ion-button>
+      <ion-button color="dark" expand="full" expand="block" shape="round" routerLink="/registro-empresa">Registrar</ion-button>
+      <ion-button color="dark" expand="full" expand="block" shape="round" routerLink="/redefinir-senha-empresa">Esqueceu a Senha?</ion-button>
+    
   </form>
 
 </ion-content>
