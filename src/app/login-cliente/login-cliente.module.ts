@@ -13,6 +13,7 @@ import { LoginClientePage } from './login-cliente.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    IonicModule,
     LoginClientePageRoutingModule,
     ReactiveFormsModule
   ],
