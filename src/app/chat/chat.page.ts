@@ -24,7 +24,9 @@ export class ChatPage implements OnInit {
   email: string;
 
   emailLogado: string;
- 
+
+  emailDestino: string;
+
   constructor(private chatService: ChatService,
               private router: Router,
               private nav: NavController,
@@ -53,19 +55,41 @@ export class ChatPage implements OnInit {
     }, err => {
 
 
-
      console.log('err', err);
 
 
 
     });
+
+    this.chatService.getChatMessages().subscribe(res => { 
+      res.forEach(msg => { 
+        
+        console.log(msg);
+        
+        if (msg.origem !== this.emailLogado && msg.destino !== this.emailLogado) {
+
+          this.emailDestino = msg.origem;
+
+        }
+
+      }) 
+    });
+
   }
  
   sendMessage() {
-    this.chatService.addChatMessage(this.newMsg, this.email, this.emailLogado).then(() => {
+    if (this.email !== undefined) {
+      this.chatService.addChatMessage(this.newMsg, this.email, this.emailLogado).then(() => {
       this.newMsg = '';
       this.content.scrollToBottom();
     });
+    } else {
+      this.chatService.addChatMessage(this.newMsg, this.emailDestino, this.emailLogado).then(() => {
+      this.newMsg = '';
+      this.content.scrollToBottom();
+     });
+
+    }
   }
  
   signOut() {

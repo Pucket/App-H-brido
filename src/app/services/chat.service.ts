@@ -61,6 +61,9 @@ export class ChatService {
   // Chat functionality
  
 addChatMessage(msg, destino, origem) {
+  console.log(msg);
+  console.log(destino);
+  console.log(origem);
   return this.afs.collection('messages').add({
     msg: msg,
     from: this.currentUser.uid,
