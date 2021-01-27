@@ -1,5 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+
+// Send unauthorized users to login
+const redirectUnauthorizedToLogin = () =>
+  redirectUnauthorizedTo(['/home']);
+ 
+// Automatically log in users
+const redirectLoggedInToChat = () => redirectLoggedInTo(['/chat']);
 
 const routes: Routes = [
   {
@@ -13,11 +21,13 @@ const routes: Routes = [
   },
   {
     path: 'form-cliente',
-    loadChildren: () => import('./form-cliente/form-cliente.module').then( m => m.FormClientePageModule)
+    loadChildren: () => import('./form-cliente/form-cliente.module').then( m => m.FormClientePageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'cliente',
-    loadChildren: () => import('./cliente/cliente.module').then( m => m.ClientePageModule)
+    loadChildren: () => import('./cliente/cliente.module').then( m => m.ClientePageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
   },
 
   {
@@ -26,13 +36,14 @@ const routes: Routes = [
   },
   {
     path: 'lista-empresa',
-    loadChildren: () => import('./empresas/lista-empresa/lista-empresa.module').then( m => m.ListaEmpresaPageModule)
+    loadChildren: () => import('./empresas/lista-empresa/lista-empresa.module').then( m => m.ListaEmpresaPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
 
     path: 'form-empresa',
-  
-    loadChildren: () => import('./empresas/form-empresa/form-empresa.module').then( m => m.FormEmpresaPageModule)
+    loadChildren: () => import('./empresas/form-empresa/form-empresa.module').then( m => m.FormEmpresaPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
   
   },
   {
@@ -49,11 +60,13 @@ const routes: Routes = [
   },
   {
     path: 'inicio-cliente',
-    loadChildren: () => import('./inicio-cliente/inicio-cliente.module').then( m => m.InicioClientePageModule)
+    loadChildren: () => import('./inicio-cliente/inicio-cliente.module').then( m => m.InicioClientePageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'inicio-empresa',
-    loadChildren: () => import('./empresas/inicio-empresa/inicio-empresa.module').then( m => m.InicioEmpresaPageModule)
+    loadChildren: () => import('./empresas/inicio-empresa/inicio-empresa.module').then( m => m.InicioEmpresaPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'redefir-senha-cliente',
@@ -65,18 +78,28 @@ const routes: Routes = [
   },
   {
     path: 'form-servico',
-    loadChildren: () => import('./empresas/form-servico/form-servico.module').then( m => m.FormServicoPageModule)
+    loadChildren: () => import('./empresas/form-servico/form-servico.module').then( m => m.FormServicoPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'servico',
-    loadChildren: () => import('./empresas/servico/servico.module').then( m => m.ServicoPageModule)
-  },  {
+    loadChildren: () => import('./empresas/servico/servico.module').then( m => m.ServicoPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
     path: 'avaliacao-empresa',
-    loadChildren: () => import('./avaliacao-empresa/avaliacao-empresa.module').then( m => m.AvaliacaoEmpresaPageModule)
+    loadChildren: () => import('./avaliacao-empresa/avaliacao-empresa.module').then( m => m.AvaliacaoEmpresaPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'exibir-servico',
-    loadChildren: () => import('./exibir-servico/exibir-servico.module').then( m => m.ExibirServicoPageModule)
+    loadChildren: () => import('./exibir-servico/exibir-servico.module').then( m => m.ExibirServicoPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
   },
 
 
