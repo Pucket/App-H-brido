@@ -5,7 +5,7 @@
           <!-- <ion-button (click)="sair()" color="secondary" routerLink="/home">Sair</ion-button> -->
           <ion-icon id="button" name="person-sharp"  slot="fixed" routerLink="/cliente"></ion-icon>
         </ion-buttons >
-       
+        
         <ion-buttons class="ion-margin-vertical" class="ion-float-right">
           
           <ion-icon name="exit-outline" routerLink="/home"></ion-icon>
@@ -43,7 +43,7 @@
         <ion-card-subtitle>Valor: R$ {{item.valor}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-button (click)="abrirServico(item)">Ver mais</ion-button>
+        <ion-button color="dark" expand="full" expand="block" shape="round" (click)="abrirServico(item)">Ver mais</ion-button>
       </ion-card-content>
     </ion-card>
 

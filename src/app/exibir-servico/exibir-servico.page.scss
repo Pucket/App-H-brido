@@ -1,0 +1,21 @@
+ion-toolbar{
+    --background: #050500;
+    color: #fcfcfc;
+}
+ion-content {
+    --background: #FFD700;
+
+    #container{
+        text-align: center;
+
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 50%;
+    }
+
+    #grid{
+        justify-content: center
+    }
+
+}
