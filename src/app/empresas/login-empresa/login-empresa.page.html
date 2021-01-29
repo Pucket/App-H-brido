@@ -18,7 +18,7 @@
 <ion-content>
   <form [formGroup]="validacao" (ngSubmit)="logar(validacao.value)">
     <ion-item id="form">
-      <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
+      <ion-input type="text" placeholder="E-mail" formControlName="email"><ion-icon name="person-outline"></ion-icon></ion-input>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let m of mensagem_validacao.email">
@@ -31,7 +31,7 @@
       </ng-container>
     </div>
     <ion-item id="form">
-      <ion-input type="password" placeholder="Senha" formControlName="senha"></ion-input>
+      <ion-input type="password" placeholder="Senha" formControlName="senha"><ion-icon name="lock-closed-outline"></ion-icon></ion-input>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let m of mensagem_validacao.senha">

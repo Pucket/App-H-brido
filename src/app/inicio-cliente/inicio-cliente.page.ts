@@ -7,10 +7,12 @@ import { NavController } from '@ionic/angular';
 import { ServicoService } from 'src/app/empresas/servico.service';
 import { identifierModuleUrl } from '@angular/compiler';
 
+
 @Component({
   selector: 'app-inicio-cliente',
   templateUrl: './inicio-cliente.page.html',
   styleUrls: ['./inicio-cliente.page.scss'],
+  
 })
 export class InicioClientePage implements OnInit {
 

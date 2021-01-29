@@ -1,8 +1,42 @@
-#container{
+ion-toolbar{
+    --background: #050500;
+    color: #fcfcfc;
     text-align: center;
+    
+}
+#ion-title{
+  margin-bottom: -20px;
+}
 
-    position: relative;
-    left: 0;
-    right: 0;
-    top: 50%;
+ion-content {
+    --background: #FFD700;
+   
+
+#container{
+        text-align: center;
+
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 40%;
+    }
+    ion-slides {
+        top: 5px;
+        height: 37%;
+        margin-top: -28px;
+        border-radius: 100px 100px 100px 100px;
+      }
+    ion-searchbar{
+        margin-top: -5px;
+        border-radius: 100px 100px 100px 100px;
+
+     }
+
+      #button{
+        text-align: right;
+      }
+
+      #ioncard{
+        margin-top: 10px;
+      }
 }

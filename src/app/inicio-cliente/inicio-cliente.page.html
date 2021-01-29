@@ -1,25 +1,42 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Inicio Cliente</ion-title>
-
-        <ion-buttons slot="start">
-            
-
-            
-               <ion-icon name="person-sharp" slot="start" routerLink="/cliente"></ion-icon>
-               
-            
-
+        <ion-title id="ion-title" class="ion-justify-content-center">AUXILIUM</ion-title>
+        <ion-buttons class="ion-margin-vertical" slot="start">
+          <!-- <ion-button (click)="sair()" color="secondary" routerLink="/home">Sair</ion-button> -->
+          <ion-icon id="button" name="person-sharp"  slot="fixed" routerLink="/cliente"></ion-icon>
+        </ion-buttons >
+       
+        <ion-buttons class="ion-margin-vertical" class="ion-float-right">
+          
+          <ion-icon name="exit-outline" routerLink="/home"></ion-icon>
         </ion-buttons>
-    </ion-toolbar>
+      </ion-toolbar>
 
 </ion-header>
 
-<ion-content>
-  <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="buscar()" placeholder="Digite sua pesquisa">
+
+<ion-content id="content">
+
+  <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="buscar()" placeholder="Digite sua pesquisa"></ion-searchbar>
     
-  </ion-searchbar>
-    <ion-card *ngFor="let item of empresa" [hidden]="!consultados">
+    <ion-slides pager="true">
+      <ion-slide>
+        <img src="assets/img/pneu.jpg"/>
+        <!-- <h1>Slide 1</h1> -->
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/img/motor.jpg"/>
+        <!-- <h1>Slide 2</h1> -->
+      </ion-slide>
+  
+      <ion-slide>
+        <img src="assets/img/troca-de-oleo.jpg"/>
+        <!-- <h1>Slide 3</h1> -->
+      </ion-slide>
+    </ion-slides>
+
+  <ion-card id="ioncard" *ngFor="let item of empresa" [hidden]="!consultados">
+   
       <ion-card-header>
         <ion-card-title>{{item.nome}}</ion-card-title>
         <ion-card-subtitle>Descrição: {{item.descricao}}</ion-card-subtitle>
@@ -37,11 +54,7 @@
               Bem vindo {{nomeCliente}}
             </ion-col>
           </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-button (click)="sair()" color="secondary" routerLink="/home">Sair</ion-button>
-            </ion-col>
-          </ion-row>
+          
         </ion-grid>    
     </div>
 
