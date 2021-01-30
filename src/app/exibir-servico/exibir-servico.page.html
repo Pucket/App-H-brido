@@ -1,11 +1,11 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-button color="primary" routerLink="/inicio-cliente" > 
-              <ion-icon name="home-outline"></ion-icon>
+            <ion-button color="primary" routerLink="/inicio-cliente">
+                <ion-icon name="home-outline"></ion-icon>
             </ion-button>
-             
-          </ion-buttons>
+
+        </ion-buttons>
         <ion-title>
             <h2>Serviço</h2>
         </ion-title>
@@ -21,13 +21,18 @@
 
     <div>
         <ion-grid id="grid">
+            <ion-row *ngFor="let item of images | async" [hidden]="item.email !== email || item.servico !== nome ">
+                <ion-col>
+                    <img [src]="item.filepath" /> {{item.email}}
+                </ion-col>
+            </ion-row>
             <ion-row>
                 <ion-col>
                     <h2> {{nome}}</h2>
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col >
+                <ion-col>
                     <h5> {{descricao}}</h5>
                     <h5> Valor: R$ {{valor}}</h5>
                 </ion-col>
@@ -35,8 +40,8 @@
             <ion-button color="dark" expand="full" expand="block" shape="round" mode="ios" (click)="avaliar()">Avaliar</ion-button>
             <h5> Email: {{email}} </h5>
             <ion-item>
-                <ion-button  color="dark" expand="full" expand="block" shape="round" type="submit" type="submit" routerLink="/chat">Chat</ion-button>
-        </ion-item>
+                <ion-button color="dark" expand="full" expand="block" shape="round" type="submit" type="submit" routerLink="/chat">Chat</ion-button>
+            </ion-item>
         </ion-grid>
     </div>
 

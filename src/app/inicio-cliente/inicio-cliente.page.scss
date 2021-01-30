@@ -1,20 +1,17 @@
-ion-toolbar{
+ion-toolbar {
     --background: #050500;
     color: #fcfcfc;
     text-align: center;
-    
 }
-#ion-title{
-  margin-bottom: -20px;
+
+#ion-title {
+    margin-bottom: -20px;
 }
 
 ion-content {
     --background: #FFD700;
-   
-
-#container{
+    #container {
         text-align: center;
-
         position: relative;
         left: 0;
         right: 0;
@@ -25,18 +22,15 @@ ion-content {
         height: 37%;
         margin-top: -28px;
         border-radius: 100px 100px 100px 100px;
-      }
-    ion-searchbar{
+    }
+    ion-searchbar {
         margin-top: -5px;
         border-radius: 100px 100px 100px 100px;
-
-     }
-
-      #button{
+    }
+    #button {
         text-align: right;
-      }
-
-      #ioncard{
+    }
+    #ioncard {
         margin-top: 10px;
-      }
+    }
 }

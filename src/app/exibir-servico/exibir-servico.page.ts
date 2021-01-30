@@ -6,6 +6,17 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AvaliacaoEmpresaService } from 'src/app/services/avaliacao-empresa.service';
 
+import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+
+export interface MyData {
+  name: string;
+  filepath: string;
+  size: number;
+  email: string;
+  servico: string;
+}
+
 @Component({
   selector: 'app-exibir-servico',
   templateUrl: './exibir-servico.page.html',
@@ -23,10 +34,19 @@ export class ExibirServicoPage implements OnInit {
   
   nota: string;
 
+  
+
+  private imageCollection: AngularFirestoreCollection<MyData>;
+  images: Observable<MyData[]>;
+
   constructor(private nav: NavController,
               private rota: ActivatedRoute,
               private alertCtrl : AlertController,
-              private service: AvaliacaoEmpresaService) { }
+              private service: AvaliacaoEmpresaService,
+              private database: AngularFirestore) {
+                this.imageCollection = database.collection<MyData>('freakyImages');
+                this.images = this.imageCollection.valueChanges();
+               }
 
   ngOnInit() {
 
