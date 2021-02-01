@@ -35,13 +35,11 @@
                 <ion-col>
                     <h5> {{descricao}}</h5>
                     <h5> Valor: R$ {{valor}}</h5>
+                    <h5> Email: {{email}} </h5>
                 </ion-col>
             </ion-row>
+            <ion-button color="dark" expand="full" expand="block" shape="round" type="submit" type="submit" (click)="abrirChat()">Chat</ion-button>
             <ion-button color="dark" expand="full" expand="block" shape="round" mode="ios" (click)="avaliar()">Avaliar</ion-button>
-            <h5> Email: {{email}} </h5>
-            <ion-item>
-                <ion-button color="dark" expand="full" expand="block" shape="round" type="submit" type="submit" (click)="abrirChat()">Chat</ion-button>
-            </ion-item>
         </ion-grid>
     </div>
 
