@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>exibir-avaliacao</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card *ngFor="let item of avaliacao">
+  
+      <ion-card-title>{{item.nome}}</ion-card-title>
+      <ion-card-subtitle>{{item.descricao}}</ion-card-subtitle>
+      <ion-card-subtitle>{{item.nota}}</ion-card-subtitle>
+    
+   
+  </ion-card>
+</ion-content>
+ 

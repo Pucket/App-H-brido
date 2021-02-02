@@ -100,7 +100,11 @@ const routes: Routes = [
     path: 'chat',
     loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule),
     ...canActivate(redirectUnauthorizedToLogin)
+  },  {
+    path: 'exibir-avaliacao',
+    loadChildren: () => import('./exibir-avaliacao/exibir-avaliacao.module').then( m => m.ExibirAvaliacaoPageModule)
   },
+
 
 
 
