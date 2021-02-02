@@ -1,82 +1,152 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Cadastrar Serviço</ion-title>
-    <ion-buttons slot="start">
-      <ion-button color="primary" routerLink="/inicio-empresa" > 
-        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Cadastrar Serviço</ion-title>
+        <ion-buttons slot="start">
+            <ion-button color="primary" routerLink="/inicio-empresa">
+                <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="validacao" (ngSubmit)="enviarServico()">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-input type="text" placeholder="Digite o nome do serviço" formControlName="nome"></ion-input>
-        </ion-col>
-      </ion-row>
-      <div class="validation-errors">
-        <ng-container *ngFor="let m of mensagem_validacao.nome">
-          <div class="error-message" 
-            *ngIf="validacao.get('nome').hasError(m.type) 
+    <form [formGroup]="validacao" (ngSubmit)="enviarServico()">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="Digite o nome do serviço" formControlName="nome"></ion-input>
+                </ion-col>
+            </ion-row>
+            <div class="validation-errors">
+                <ng-container *ngFor="let m of mensagem_validacao.nome">
+                    <div class="error-message" *ngIf="validacao.get('nome').hasError(m.type) 
             && (validacao.get('nome').dirty 
             || validacao.get('nome').touched)">
-            {{m.message}}
-          </div>
-        </ng-container>
-      </div>
-      <ion-row>
-        <ion-col>
-          <ion-input type="text" placeholder="Descrição do serviço" formControlName="descricao"></ion-input>
-        </ion-col>
-      </ion-row>
-      <div class="validation-errors">
-        <ng-container *ngFor="let m of mensagem_validacao.descricao">
-          <div class="error-message" 
-            *ngIf="validacao.get('descricao').hasError(m.type) 
+                        {{m.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="Descrição do serviço" formControlName="descricao"></ion-input>
+                </ion-col>
+            </ion-row>
+            <div class="validation-errors">
+                <ng-container *ngFor="let m of mensagem_validacao.descricao">
+                    <div class="error-message" *ngIf="validacao.get('descricao').hasError(m.type) 
             && (validacao.get('descricao').dirty 
             || validacao.get('descricao').touched)">
-            {{m.message}}
-          </div>
-        </ng-container>
-      </div>
-      <ion-row>
-        <ion-col>
-          <ion-input type="text" placeholder="Digite valor do serviço" formControlName="valor"></ion-input>
-        </ion-col>
-      </ion-row>
-      <div class="validation-errors">
-        <ng-container *ngFor="let m of mensagem_validacao.valor">
-          <div class="error-message" 
-            *ngIf="validacao.get('valor').hasError(m.type) 
+                        {{m.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="Digite valor do serviço" formControlName="valor"></ion-input>
+                </ion-col>
+            </ion-row>
+            <div class="validation-errors">
+                <ng-container *ngFor="let m of mensagem_validacao.valor">
+                    <div class="error-message" *ngIf="validacao.get('valor').hasError(m.type) 
             && (validacao.get('valor').dirty 
             || validacao.get('valor').touched)">
-            {{m.message}}
-          </div>
-        </ng-container>
-      </div>
-      <ion-row>
-        <ion-col>
-          <ion-input type="text" placeholder="Digite o email" formControlName="email"></ion-input>
-        </ion-col>
-      </ion-row>
-      <div class="validation-errors">
-        <ng-container *ngFor="let m of mensagem_validacao.email">
-          <div class="error-message" 
-            *ngIf="validacao.get('email').hasError(m.type) 
+                        {{m.message}}
+                    </div>
+                </ng-container>
+            </div>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="Digite o email" formControlName="email"></ion-input>
+                </ion-col>
+            </ion-row>
+            <div class="validation-errors">
+                <ng-container *ngFor="let m of mensagem_validacao.email">
+                    <div class="error-message" *ngIf="validacao.get('email').hasError(m.type) 
             && (validacao.get('email').dirty 
             || validacao.get('email').touched)">
-            {{m.message}}
-          </div>
-        </ng-container>
-      </div>
-      <ion-row>
-        <ion-col>
-          <ion-button  color="dark" expand="full" expand="block" shape="round" type="submit" type="submit" type="submit" [disabled]="!validacao.valid">Enviar</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
-  </ion-content>
+                        {{m.message}}
+                    </div>
+                </ng-container>
+            </div>
+
+            <!-- upload-->
+            <ion-header collapse="condense">
+                <ion-toolbar>
+                    <ion-title size="large">Blank</ion-title>
+                </ion-toolbar>
+            </ion-header>
+
+            <ion-card class="ion-text-center" *ngIf="!isUploading && !isUploaded">
+                <ion-card-header>
+                    <ion-card-title>Choose Images to Upload</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+
+                    <ion-button color="success" shape="round" size="large">
+                        <span>Select Image</span>
+                        <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)" />
+                    </ion-button>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card class="ion-text-center" *ngIf="isUploading && !isUploaded">
+                <ion-card-header>
+                    <ion-card-title>Selected File:<b>{{ fileName }}</b></ion-card-title>
+                </ion-card-header>
+
+                <ion-card-content>
+                    <div *ngIf="percentage | async as pct">
+                        Progress: {{ pct | number }}%
+                        <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+                    </div>
+                    <div *ngIf="snapshot | async as snap">
+                        File Size: {{ snap.totalBytes }} Transfered: {{ snap.bytesTransferred }}
+                        <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
+                            <ion-button color="warning" size="small" (click)="task.pause()" class="button is-warning">Pause</ion-button>
+                            <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
+                            <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card class="ion-text-center" *ngIf="!isUploading && isUploaded">
+                <ion-card-header>
+                    <ion-card-title>
+                        <b>{{ fileName }}</b> Uploaded!
+                    </ion-card-title>
+                </ion-card-header>
+
+                <ion-card-content>
+                    <div *ngIf="UploadedFileURL | async as url">
+                        <img [src]="url" />
+                        <a [href]="url" target="_blank" rel="noopener">Download</a>
+                    </div>
+                    File Size: {{ fileSize }}
+                    <ion-button expand="full" color="success" (click)="isUploading = isUploaded = false">Upload More</ion-button>
+                </ion-card-content>
+
+                <!--     <h2 class="ion-text-center">Uploaded Freaky Images</h2>
+
+                <ion-card color="light" class="ion-text-center" *ngFor="let item of images | async" [hidden]="item.email !== emailLogin">
+                    <ion-card-header>
+                        <ion-card-title>
+                            {{ item.name }}
+                        </ion-card-title>
+                    </ion-card-header>
+
+                        <ion-card-content>
+                        <img [src]="item.filepath" />
+                        <a [href]="item.filepath" target="_blank" rel="noopener">Download</a>
+                    </ion-card-content>-
+            </ion-card> -->
+            </ion-card>
+
+            <ion-row>
+                <ion-col>
+                    <ion-button color="dark" expand="full" expand="block" shape="round" type="submit" type="submit" type="submit" [disabled]="!validacao.valid">Enviar</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>
