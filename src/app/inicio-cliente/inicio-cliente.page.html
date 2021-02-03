@@ -19,21 +19,25 @@
 
   <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="buscar()" placeholder="Digite sua pesquisa"></ion-searchbar>
     
-    <ion-slides pager="true">
-      <ion-slide>
-        <img src="assets/img/pneu.jpg"/>
-        <!-- <h1>Slide 1</h1> -->
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/img/motor.jpg"/>
-        <!-- <h1>Slide 2</h1> -->
-      </ion-slide>
-  
-      <ion-slide>
-        <img src="assets/img/troca-de-oleo.jpg"/>
-        <!-- <h1>Slide 3</h1> -->
-      </ion-slide>
-    </ion-slides>
+    <ion-grid fixed>
+      <ion-col size="12">
+        <ion-slides pager="true">
+          <ion-slide>
+            <img src="assets/img/pneu.jpg"/>
+            <!-- <h1>Slide 1</h1> -->
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/img/motor.jpg"/>
+            <!-- <h1>Slide 2</h1> -->
+          </ion-slide>
+      
+          <ion-slide>
+            <img src="assets/img/troca-de-oleo.jpg"/>
+            <!-- <h1>Slide 3</h1> -->
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-grid>
 
   <ion-card id="ioncard" *ngFor="let item of empresa" [hidden]="!consultados">
    
