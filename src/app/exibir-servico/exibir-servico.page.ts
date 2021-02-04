@@ -29,7 +29,7 @@ export class ExibirServicoPage implements OnInit {
   descricao: string;
   valor: string;
   email: string;
-
+  servico: string;
   titulo: string;
   
   nota: string;
@@ -55,6 +55,7 @@ export class ExibirServicoPage implements OnInit {
     this.descricao = this.rota.snapshot.params['descricao'];
     this.valor = this.rota.snapshot.params['valor'];
     this.email = this.rota.snapshot.params['email'];
+    this.servico = this.rota.snapshot.params['servico'];
 
   }
 
@@ -78,6 +79,16 @@ export class ExibirServicoPage implements OnInit {
           type: 'textarea',
           placeholder: 'Descrição'
         },
+        // {
+        //   name: 'servico',
+        //   type: 'text',
+        //   placeholder: 'serviço'
+        // },
+        // {
+        //   name: 'email',
+        //   type: 'text',
+        //   placeholder: 'Email'
+        // },
       ],
       
       buttons: [
@@ -96,15 +107,21 @@ export class ExibirServicoPage implements OnInit {
 
 
             console.log(form.Descrição);
+            // console.log(form.servico);
+            // console.log(form.email);
 
             console.log(form);
             
            this.titulo = form.Titulo;
            this.descricao= form.Descrição;
+          //  this.servico= form.servico;
+          //  this.email= form.email;
 
    
             console.log("Nome: " + this.titulo);
             console.log("Descrição: " + this.descricao);
+            // console.log("serviço: " + this.servico);
+            // console.log("email: " + this.email);
           
             this.radios();
           }
@@ -164,6 +181,8 @@ export class ExibirServicoPage implements OnInit {
             
             avaliacao['nome'] = this.titulo;
             avaliacao['descricao'] = this.descricao;
+            avaliacao['servico'] = this.servico;
+            avaliacao['email'] = this.email;
             avaliacao['nota'] = form;
 
           this.service.incluir(avaliacao);
@@ -178,9 +197,24 @@ export class ExibirServicoPage implements OnInit {
 }
 
 abrirChat(){
-    this.nav.navigateForward( [ "/chat", {  id: this.id, nome: this.nome, 
-      descricao: this.descricao, valor: this.valor, email: this.email } ]);
+    this.nav.navigateForward( [ "/chat", {  id: this.id,
+       nome: this.nome, 
+      descricao: this.descricao,
+       valor: this.valor,
+        email: this.email,
+      servico: this.servico } ]);
   }
-  
+
+  exibiravaliacao(){
+   console.log (this.nome);
+    this.nav.navigateForward( ["/exibir-avaliacao",{
+      id: this.id,
+      nome: this.nome,
+      descricao: this.descricao,
+      nota: this.nota,
+      servico: this.servico,
+      email: this.email
+    }]);
+  }
 
 }

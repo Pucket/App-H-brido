@@ -19,6 +19,8 @@ export class ExibirAvaliacaoPage implements OnInit {
   nome: string;
   descricao: string;
   nota: string;
+  servico: string;
+  email: string;
 
   avaliacao: any;
  
@@ -32,6 +34,13 @@ export class ExibirAvaliacaoPage implements OnInit {
 
   ngOnInit() {
 
+    this.nome = this.rota.snapshot.params['nome'];
+    this.descricao = this.rota.snapshot.params['descricao'];
+    this.nota = this.rota.snapshot.params['nota'];
+    this.servico = this.rota.snapshot.params['servico'];
+    this.email = this.rota.snapshot.params['email'];
+    
+
   this.service.listar().subscribe(data => {
       
       this.avaliacao = data.map(e =>{
@@ -40,16 +49,20 @@ export class ExibirAvaliacaoPage implements OnInit {
           // id: e.payload.doc.id,
           nome: e.payload.doc.data()['nome'],
           descricao: e.payload.doc.data()['descricao'],
-          nota: e.payload.doc.data()['nota']
+          nota: e.payload.doc.data()['nota'],
+          servico: e.payload.doc.data()['servico'],
+          email: e.payload.doc.data()['email']
+          
         };
       }
        
          );
-         console.log(this.avaliacao);
+        
     } 
     );
 
-    
+    console.log(this.email);
+    console.log(this.nome);
   }
 }
 

@@ -124,7 +124,7 @@ export class FormServicoPage implements OnInit {
     console.log(this.emailLogin);
 
     this.logado.detalhes().subscribe(res => {
-
+ 
       //if ( res !== null){
        console.log(res.email);
        this.emailLogin = res.email;
