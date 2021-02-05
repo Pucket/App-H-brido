@@ -181,7 +181,7 @@ export class ExibirServicoPage implements OnInit {
             
             avaliacao['nome'] = this.titulo;
             avaliacao['descricao'] = this.descricao;
-            avaliacao['servico'] = this.servico;
+            avaliacao['servico'] = this.nome;
             avaliacao['email'] = this.email;
             avaliacao['nota'] = form;
 
