@@ -2,7 +2,7 @@
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-button color="primary" routerLink="/inicio-cliente">
-                <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+                <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
             </ion-button>
 
         </ion-buttons>
@@ -38,10 +38,15 @@
                     <h5> Email: {{email}} </h5>
                 </ion-col>
             </ion-row>
+
             <ion-button color="dark" expand="full" expand="block" shape="round" type="submit" type="submit" (click)="abrirChat()">Chat</ion-button>
             <ion-button color="dark" expand="full" expand="block" shape="round" mode="ios" (click)="avaliar()">Avaliar</ion-button>
             <ion-button color="dark" expand="full" expand="block" shape="round" mode="ios" (click)="exibiravaliacao()">Exibir Avaliação</ion-button>
+
+            <ion-button href="{{caminho}}" color="dark" expand="full" expand="block" shape="round" mode="ios">
+                <ion-icon slot="end" name="locate-sharp"></ion-icon>Localização</ion-button>
         </ion-grid>
+
     </div>
 
 </ion-content>

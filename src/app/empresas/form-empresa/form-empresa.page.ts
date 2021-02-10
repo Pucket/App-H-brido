@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavController } from '@ionic/angular';
+import { NavController , AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { EmpresaService } from 'src/app/services/empresa.service';
 
@@ -9,6 +9,8 @@ import { AutenticacaoempresaService } from 'src/app/services/autenticacaoempresa
 //import { EmpresaService } from '../services/empresa.service';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-form-empresa',
@@ -29,14 +31,31 @@ export class FormEmpresaPage implements OnInit {
 
   id = null;
 
+  //geoloacalização
+   // Readable Address
+   address: string;
+
+   // Location coordinates
+   latitude: number;
+   longitude: number;
+  
+ 
+   
+
   constructor( private service: EmpresaService,
                private nav: NavController,
                private rota: ActivatedRoute,
                private formulario: FormBuilder,
-               private logado: AutenticacaoempresaService) { }
+               private logado: AutenticacaoempresaService,
+                private alertCtrl : AlertController) {
+                  
+                 }
 
   ngOnInit() {
 
+    this.latitude = this.rota.snapshot.params['varLatitude'];
+    this.longitude = this.rota.snapshot.params['varLongitude'];
+    this.address = this.rota.snapshot.params['varAddress'];
 
     this.id = this.rota.snapshot.params['id'];
 
@@ -61,11 +80,22 @@ export class FormEmpresaPage implements OnInit {
       ]))
 
     });
+
+    
+
+
+    
+   console.log(this.latitude);
+    console.log(this.longitude);
+    console.log(this.address);
+   // this.alertCtrlm();
     this.validacao.get('nome').setValue(this.rota.snapshot.params['nome']);
     console.log(this.emailLogin);
     this.validacao.get('email').setValue(this.emailLogin);
-    this.validacao.get('endereco').setValue(this.rota.snapshot.params['endereco']);
+    this.validacao.get('endereco').setValue(this.address);
     this.validacao.get('telefone').setValue(this.rota.snapshot.params['telefone']);
+
+    
     
     this.logado.detalhes().subscribe(res => {
 
@@ -84,6 +114,7 @@ export class FormEmpresaPage implements OnInit {
 
   }
 
+ 
   mensagem_validacao = {
     'nome': [
       {type: 'required', message: 'Nome é obrigatório'},
@@ -116,6 +147,8 @@ export class FormEmpresaPage implements OnInit {
     empresa['email'] = this.validacao.get('email').value;
     empresa['endereco'] = this.validacao.get('endereco').value;
     empresa['telefone'] = this.validacao.get('telefone').value;
+    empresa['latitude'] = this.latitude;
+    empresa['longitude'] = this.longitude;
 
     console.log(empresa);
     if (this.id == null){
@@ -126,5 +159,7 @@ export class FormEmpresaPage implements OnInit {
 
     this.nav.navigateForward("inicio-empresa");
   }
+
+ 
 
 }

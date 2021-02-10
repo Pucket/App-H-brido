@@ -8,6 +8,7 @@ import { AvaliacaoEmpresaService } from 'src/app/services/avaliacao-empresa.serv
 
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { EmpresaService } from 'src/app/services/empresa.service';
 
 export interface MyData {
   name: string;
@@ -34,7 +35,12 @@ export class ExibirServicoPage implements OnInit {
   
   nota: string;
 
-  
+  latitude: number;
+  longitude: number;
+  endereco: string;
+
+  caminho: string;
+
 
   private imageCollection: AngularFirestoreCollection<MyData>;
   images: Observable<MyData[]>;
@@ -43,7 +49,8 @@ export class ExibirServicoPage implements OnInit {
               private rota: ActivatedRoute,
               private alertCtrl : AlertController,
               private service: AvaliacaoEmpresaService,
-              private database: AngularFirestore) {
+              private database: AngularFirestore,
+              private empresaService : EmpresaService) {
                 this.imageCollection = database.collection<MyData>('freakyImages');
                 this.images = this.imageCollection.valueChanges();
                }
@@ -56,6 +63,34 @@ export class ExibirServicoPage implements OnInit {
     this.valor = this.rota.snapshot.params['valor'];
     this.email = this.rota.snapshot.params['email'];
     this.servico = this.rota.snapshot.params['servico'];
+
+    let empresas: any;
+    this.empresaService.listar().subscribe(data => {
+      empresas = data.map(e => {
+        return {
+        id: e.payload.doc.id,
+
+        nome: e.payload.doc.data()['nome'],
+        email: e.payload.doc.data()['email'],
+        telefone: e.payload.doc.data()['telefone'],
+        endereco: e.payload.doc.data()['endereco'],
+        latitude: e.payload.doc.data()['latitude'],
+        longitude: e.payload.doc.data()['longitude']};
+
+      });	
+      for (let emp of empresas) {
+        if (emp.email === this.email) {
+          this.latitude = emp.latitude;
+          this.longitude = emp.longitude;
+          this.endereco = emp.endereco;
+
+          this.latitude = emp.latitude;
+
+        this.caminho = `https://google.com/maps/search/?api=1&query=${this.latitude},${this.longitude}`;
+        }
+
+      }
+    });
 
   }
 
